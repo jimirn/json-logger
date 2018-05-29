@@ -31,6 +31,13 @@
          	"isHidden": true
          }
       },
+      "serverHost":{
+         "type":"string",
+         "devkit": {
+         	"default": "should be defined on the connector config schema",
+			"isHidden": true
+         }
+      },
       "rootCorrelationId":{
          "type":"string",
          "devkit": {
@@ -39,6 +46,13 @@
          }
       },	  
       "correlationId":{
+         "type":"string",
+         "devkit": {
+         	"default": "should be defined on the connector config schema",
+			"isHidden": true
+         }
+      },
+      "contextServiceName":{
          "type":"string",
          "devkit": {
          	"default": "should be defined on the connector config schema",
@@ -71,6 +85,12 @@
          "enum": ["START", "BEFORE TRANSFORM","AFTER TRANSFORM", "BEFORE API OR BACKEND", "AFTER API OR BACKEND", "END", "EXCEPTION"],
          "devkit": {
          	"default": "START"
+         }
+      },
+      "messageType":{
+         "type":"string",
+         "devkit": {
+         	"default": "Generic"
          }
       },
       "message":{

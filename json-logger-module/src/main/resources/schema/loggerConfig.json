@@ -20,6 +20,14 @@
          	"isConfig": true
          }
       },
+      "serverHost":{
+         "type":"string",
+         "devkit": {
+			"placement":"Default expressions",
+         	"default": "#[server.host]",
+			"isConfig": true
+         }
+      },
       "rootCorrelationId":{
          "type":"string",
          "devkit": {
@@ -33,6 +41,14 @@
          "devkit": {
 			"placement":"Default expressions",
          	"default": "#[message.id]",
+			"isConfig": true
+         }
+      },
+      "contextServiceName":{
+         "type":"string",
+         "devkit": {
+			"placement":"Default expressions",
+         	"default": "#[context:serviceName]",
 			"isConfig": true
          }
       },
