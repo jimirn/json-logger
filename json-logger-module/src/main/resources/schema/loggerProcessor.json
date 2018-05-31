@@ -82,7 +82,7 @@
       },
       "tracePoint":{
          "type":"string",
-         "enum": ["START", "BEFORE TRANSFORM","AFTER TRANSFORM", "BEFORE API OR BACKEND", "AFTER API OR BACKEND", "END", "EXCEPTION"],
+         "enum": ["START", "GENERIC", "BEFORE TRANSFORM","AFTER TRANSFORM", "BEFORE API OR BACKEND", "AFTER API OR BACKEND", "END", "EXCEPTION"],
          "devkit": {
          	"default": "START"
          }
