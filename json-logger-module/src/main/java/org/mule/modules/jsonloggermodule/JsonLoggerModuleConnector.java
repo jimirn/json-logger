@@ -1,25 +1,16 @@
 package org.mule.modules.jsonloggermodule;
 
-import java.io.IOException;
-
 import javax.inject.Inject;
 
 import org.apache.commons.beanutils.BeanUtils;
-import org.json.JSONException;
-import org.mule.api.MuleContext;
 import org.mule.api.MuleEvent;
 import org.mule.api.annotations.Config;
 import org.mule.api.annotations.Connector;
 import org.mule.api.annotations.Processor;
-import org.mule.api.annotations.lifecycle.Start;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Literal;
 import org.mule.api.expression.ExpressionManager;
-import org.mule.api.registry.Registry;
-import org.mule.api.store.ObjectStoreException;
 import org.mule.modules.jsonloggermodule.config.AbstractJsonLoggerConfig;
-import org.mule.modules.jsonloggermodule.config.JsonLoggerWithMQConfig;
-import org.mule.modules.jsonloggermodule.utils.AnypointMQHelper;
 import org.mule.modules.pojos.LoggerProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,23 +31,6 @@ public class JsonLoggerModuleConnector {
     @Inject
     ExpressionManager expressionManager;
     
-    /**
-     * Mule registry object required to perform store lookup.
-     */
-    @Inject
-    private Registry registry;
-
-    /**
-     * Manages mule objects lifecycle
-     */
-    @Inject
-    private MuleContext muleContext = null;
-
-    /**
-     * Temp definition for MQ in case it is required
-     */
-    private AnypointMQHelper amq;
-    
     /** 
 	 * Create the SLF4J logger
 	 * jsonLogger: JSON output log
@@ -66,21 +40,7 @@ public class JsonLoggerModuleConnector {
     private static final Logger log = LoggerFactory.getLogger("org.mule.modules.jsonloggermodule.JsonLoggerModuleConnector");
     
     private static final ObjectMapper om = new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL);
-
-    /**
-     * Initializes and validates the configuration parameters. It retrieves an instance of object store from mule objectStoreManager.
-     * @throws IOException 
-     * @throws JSONException 
-     * @throws ObjectStoreException 
-     */
-    @Start
-	public void init() throws ObjectStoreException, JSONException, IOException {
-		if (config.getIsMQ()) {
-			JsonLoggerWithMQConfig amqConf = (JsonLoggerWithMQConfig) config;
-			amq = new AnypointMQHelper(amqConf.getClientAppId(), amqConf.getClientSecret(), amqConf.getMqEndpoint(), amqConf.getDestination(), registry, muleContext);
-		}
-	}
-    
+   
     /**
      * Log a new entry
      */
@@ -135,10 +95,6 @@ public class JsonLoggerModuleConnector {
 						
 			doLog(loggerJson.getPriority().toString(), logLine);
 			
-			if (config.getIsMQ()) {
-				amq.send(logLine);
-			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -190,13 +146,4 @@ public class JsonLoggerModuleConnector {
     public void setExpressionManager(ExpressionManager expressionManager) {
     	this.expressionManager = expressionManager;
     }
-    
-    public void setRegistry(final Registry registry) {
-        this.registry = registry;
-    }
-
-    public void setMuleContext(MuleContext context) {
-        muleContext = context;
-    }
-
 }
