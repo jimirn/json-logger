@@ -1,103 +1,123 @@
 {
-   "$schema":"http://json-schema.org/draft-04/schema#",
-   "description":"Definition for fields used in the logger message processor",
-   "type":"object",
-   "properties":{
-      "applicationName":{
-         "type":"string",
-         "devkit": {
-         	"default": "should be defined on the connector config schema",
-         	"isHidden": true
-         }
-      },
-      "applicationVersion":{
-         "type":"string",
-         "devkit": {
-         	"default": "should be defined on the connector config schema",
-         	"isHidden": true
-         }
-      },
-      "environment":{
-         "type":"string",
-         "devkit": {
-         	"default": "should be defined on the connector config schema",
-         	"isHidden": true
-         }
-      },
-      "timestamp":{
-         "type":"string",
-         "devkit": {
-         	"default": "should be defined on the connector config schema",
-         	"isHidden": true
-         }
-      },
-      "serverHost":{
-         "type":"string",
-         "devkit": {
-         	"default": "should be defined on the connector config schema",
-			"isHidden": true
-         }
-      },
-      "rootCorrelationId":{
-         "type":"string",
-         "devkit": {
-         	"default": "should be defined on the connector config schema",
-			"isHidden": true
-         }
-      },	  
-      "correlationId":{
-         "type":"string",
-         "devkit": {
-         	"default": "should be defined on the connector config schema",
-			"isHidden": true
-         }
-      },
-      "contextServiceName":{
-         "type":"string",
-         "devkit": {
-         	"default": "should be defined on the connector config schema",
-			"isHidden": true
-         }
-      },
-       "threadName":{
-         "type":"string",
-         "devkit": {
-         	"default": "calculated internally",
-         	"isHidden": true
-         }
-      },
-      "elapsed":{
-         "type":"string",
-         "devkit": {
-         	"default": "calculated internally",
-         	"isHidden": true
-         }
-      },
-      "priority":{
-         "type":"string",
-         "enum": ["DEBUG", "INFO", "WARN", "ERROR"],
-         "devkit": {
-         	"default": "INFO"
-         }
-      },
-      "tracePoint":{
-         "type":"string",
-         "enum": ["START", "GENERIC", "BEFORE TRANSFORM","AFTER TRANSFORM", "BEFORE API OR BACKEND", "AFTER API OR BACKEND", "END", "EXCEPTION"],
-         "devkit": {
-         	"default": "START"
-         }
-      },
-      "messageType":{
-         "type":"string",
-         "devkit": {
-         	"default": "Generic"
-         }
-      },
-      "message":{
-         "type":"string",
-         "devkit": {
-         	"default": ""
-         }
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Definition for fields used in the logger message processor",
+  "type": "object",
+  "properties": {
+    "applicationName": {
+      "type": "string",
+      "devkit": {
+        "default": "should be defined on the connector config schema",
+        "isHidden": true
       }
-   }
+    },
+    "applicationVersion": {
+      "type": "string",
+      "devkit": {
+        "default": "should be defined on the connector config schema",
+        "isHidden": true
+      }
+    },
+    "environment": {
+      "type": "string",
+      "devkit": {
+        "default": "should be defined on the connector config schema",
+        "isHidden": true
+      }
+    },
+    "timestamp": {
+      "type": "string",
+      "devkit": {
+        "default": "should be defined on the connector config schema",
+        "isHidden": true
+      }
+    },
+    "serverHost": {
+      "type": "string",
+      "devkit": {
+        "default": "should be defined on the connector config schema",
+        "isHidden": true
+      }
+    },
+    "rootCorrelationId": {
+      "type": "string",
+      "devkit": {
+        "default": "should be defined on the connector config schema",
+        "isHidden": true
+      }
+    },
+    "correlationId": {
+      "type": "string",
+      "devkit": {
+        "default": "should be defined on the connector config schema",
+        "isHidden": true
+      }
+    },
+    "contextServiceName": {
+      "type": "string",
+      "devkit": {
+        "default": "should be defined on the connector config schema",
+        "isHidden": true
+      }
+    },
+    "threadName": {
+      "type": "string",
+      "devkit": {
+        "default": "calculated internally",
+        "isHidden": true
+      }
+    },
+    "elapsed": {
+      "type": "string",
+      "devkit": {
+        "default": "calculated internally",
+        "isHidden": true
+      }
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "DEBUG",
+        "INFO",
+        "WARN",
+        "ERROR"
+      ],
+      "devkit": {
+        "default": "INFO"
+      }
+    },
+    "tracePoint": {
+      "type": "string",
+      "enum": [
+        "START",
+        "GENERIC",
+        "BEFORE TRANSFORM",
+        "AFTER TRANSFORM",
+        "BEFORE API OR BACKEND",
+        "AFTER API OR BACKEND",
+        "END",
+        "EXCEPTION"
+      ],
+      "devkit": {
+        "default": "START"
+      }
+    },
+    "messageType": {
+      "type": "string",
+      "enum": [
+        "GENERIC",
+        "HTTP_REQUEST",
+        "HTTP_RESPONSE",
+        "EXCEPTION"
+      ],
+      "devkit": {
+        "default": "GENERIC"
+      }
+    },
+    "message": {
+      "type": "object",
+      "devkit": {
+        "default": ""
+      }
+    }
+  }
 }

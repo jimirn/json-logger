@@ -1,0 +1,7 @@
+change pom.xml version for new release
+
+mvn clean package
+
+copy src/test/java java-files (except Message.java and Tester.java) into target/java-gen under org.mule.modules.pojos
+
+mvn deploy
