@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
     "type", "name"
 })
-public class HttpRequestMessage extends Message {
+public class HttpRequestConsumerMessage extends Message {
 	
 	@JsonProperty
 	private String type;
@@ -17,9 +17,9 @@ public class HttpRequestMessage extends Message {
 	@JsonProperty
 	private String name;
 	
-	public HttpRequestMessage(String name) {
+	public HttpRequestConsumerMessage(String name) {
 		super();
-		this.type = "HTTP_REQUEST";
+		this.type = "HTTP_REQUEST_CONSUMER";
 		this.name = name;
 	}
 	public String getType() {
@@ -35,29 +35,29 @@ public class HttpRequestMessage extends Message {
 		this.name = name;
 	}
 	
-	public static HttpRequestMessageBuilder builder() {
-		return new HttpRequestMessageBuilder();
+	public static HttpRequestConsumerMessageBuilder builder() {
+		return new HttpRequestConsumerMessageBuilder();
 	}
-	public static class HttpRequestMessageBuilder {
+	public static class HttpRequestConsumerMessageBuilder {
 		private String name;
 		private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 	    
-		HttpRequestMessageBuilder() {
+		HttpRequestConsumerMessageBuilder() {
 	    }
-		public HttpRequestMessageBuilder name(String name) {
+		public HttpRequestConsumerMessageBuilder name(String name) {
 			this.name = name;
 			return this;
 		}
-		public HttpRequestMessageBuilder additionalProperties(String name, String value) {
+		public HttpRequestConsumerMessageBuilder additionalProperties(String name, String value) {
 			this.additionalProperties.put(name, value);
 			return this;
 		}
-		public HttpRequestMessage build() {
-			HttpRequestMessage httpRequestMessage = new HttpRequestMessage(name);
+		public HttpRequestConsumerMessage build() {
+			HttpRequestConsumerMessage httpRequestConsumerMessage = new HttpRequestConsumerMessage(name);
 			if(!additionalProperties.isEmpty()) {
-				additionalProperties.forEach((name,value) -> httpRequestMessage.setAdditionalProperty(name, value));
+				additionalProperties.forEach((name,value) -> httpRequestConsumerMessage.setAdditionalProperty(name, value));
 			}
-			return httpRequestMessage;
+			return httpRequestConsumerMessage;
 		}
 	}
 }

@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
     "type", "name", "status", "reason", "response"
 })
-public class HttpResponseMessage extends Message {
+public class HttpResponseConsumerMessage extends Message {
 	
 	@JsonProperty
 	private String type;
@@ -22,9 +22,9 @@ public class HttpResponseMessage extends Message {
 	@JsonProperty
 	private String response;
 	
-	public HttpResponseMessage(String name, String status, String reason, String response) {
+	public HttpResponseConsumerMessage(String name, String status, String reason, String response) {
 		super();
-		this.type = "HTTP_RESPONSE";
+		this.type = "HTTP_RESPONSE_CONSUMER";
 		this.name = name;
 		this.status = status;
 		this.reason = reason;
@@ -61,44 +61,44 @@ public class HttpResponseMessage extends Message {
 		this.response = response;
 	}
 	
-	public static HttpResponseMessageBuilder builder() {
-		return new HttpResponseMessageBuilder();
+	public static HttpResponseConsumerMessageBuilder builder() {
+		return new HttpResponseConsumerMessageBuilder();
 	}
-	public static class HttpResponseMessageBuilder {
+	public static class HttpResponseConsumerMessageBuilder {
 		private String name;
 		private String status;
 		private String reason;
 		private String response;
 		private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 	    
-		HttpResponseMessageBuilder() {
+		HttpResponseConsumerMessageBuilder() {
 	    }
-		public HttpResponseMessageBuilder name(String name) {
+		public HttpResponseConsumerMessageBuilder name(String name) {
 			this.name = name;
 			return this;
 		}
-		public HttpResponseMessageBuilder status(String status) {
+		public HttpResponseConsumerMessageBuilder status(String status) {
 			this.status = status;
 			return this;
 		}
-		public HttpResponseMessageBuilder reason(String reason) {
+		public HttpResponseConsumerMessageBuilder reason(String reason) {
 			this.reason = reason;
 			return this;
 		}
-		public HttpResponseMessageBuilder response(String response) {
+		public HttpResponseConsumerMessageBuilder response(String response) {
 			this.response = response;
 			return this;
 		}
-		public HttpResponseMessageBuilder additionalProperties(String name, String value) {
+		public HttpResponseConsumerMessageBuilder additionalProperties(String name, String value) {
 			this.additionalProperties.put(name, value);
 			return this;
 		}
-		public HttpResponseMessage build() {
-			HttpResponseMessage httpResponseMessage = new HttpResponseMessage(name, status, reason, response);
+		public HttpResponseConsumerMessage build() {
+			HttpResponseConsumerMessage httpResponseConsumerMessage = new HttpResponseConsumerMessage(name, status, reason, response);
 			if(!additionalProperties.isEmpty()) {
-				additionalProperties.forEach((name,value) -> httpResponseMessage.setAdditionalProperty(name, value));
+				additionalProperties.forEach((name,value) -> httpResponseConsumerMessage.setAdditionalProperty(name, value));
 			}
-			return httpResponseMessage;
+			return httpResponseConsumerMessage;
 		}
 	}
 }
