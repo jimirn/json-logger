@@ -73,6 +73,13 @@
         "isHidden": true
       }
     },
+    "elapsedDelta": {
+      "type": "string",
+      "devkit": {
+        "default": "calculated internally",
+        "isHidden": true
+      }
+    },
     "priority": {
       "type": "string",
       "enum": [

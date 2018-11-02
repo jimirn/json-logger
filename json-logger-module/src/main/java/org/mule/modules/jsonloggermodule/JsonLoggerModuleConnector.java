@@ -47,20 +47,30 @@ public class JsonLoggerModuleConnector {
     @Processor
     public void logger(
     		@Literal @Default(value="#[flowVars['timerVariable']]") String timerVariable, 
+    		@Literal @Default(value="#[flowVars['timerDeltaVariable']]") String timerDeltaVariable,
     		LoggerProcessor loggerJson, 
     		MuleEvent event) {
     	
-    	// Calculate elapsed time based on timeVariable. Default flowVars['timerVariable']
-		if (timerVariable == null) timerVariable = "#[flowVars['timerVariable']]";
+    	if (timerVariable == null) timerVariable = "#[flowVars['timerVariable']]";
+		if (timerDeltaVariable == null) timerDeltaVariable = "#[flowVars['timerDeltaVariable']]";
 		
 		Long elapsed = null;
+		Long current = System.currentTimeMillis();
 		if (!expressionManager.parse(timerVariable, event).equals("null")) {
-			Long current = System.currentTimeMillis();
 			elapsed = current - Long.parseLong(expressionManager.parse(timerVariable, event));
 		} else {
-			expressionManager.enrich(timerVariable, event, System.currentTimeMillis()); // Set the variable value to the current timestamp for the next elapsed calculation
+			expressionManager.enrich(timerVariable, event, current); // Set the variable value to the current timestamp for the next elapsed calculation
 		}
 
+		Long elapsedDelta = null;
+		if (!expressionManager.parse(timerDeltaVariable, event).equals("null")) {
+			Long timerDelta = Long.parseLong(expressionManager.parse(timerDeltaVariable, event));
+			elapsedDelta = current - timerDelta;
+		}
+		//always set timerDeltaVariable to current
+		expressionManager.enrich(timerDeltaVariable, event, current);
+			
+		
 		// Define JSON output formatting 
 		ObjectWriter ow = null;
 		if (config.getPrettyPrint() == true) {
@@ -76,6 +86,9 @@ public class JsonLoggerModuleConnector {
 			
 			if (elapsed != null) {
 				loggerJson.setElapsed(Long.toString(elapsed));
+			}
+			if(elapsedDelta != null) {
+				loggerJson.setElapsedDelta(Long.toString(elapsedDelta));
 			}
 			loggerJson.setThreadName(Thread.currentThread().getName());
 			
