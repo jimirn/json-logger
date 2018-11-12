@@ -112,8 +112,8 @@
       "type": "string",
       "enum": [
         "GENERIC",
-        "HTTP_REQUEST",
-        "HTTP_RESPONSE",
+        "HTTP_REQUEST_CONSUMER",
+        "HTTP_RESPONSE_CONSUMER",
         "EXCEPTION"
       ],
       "devkit": {
