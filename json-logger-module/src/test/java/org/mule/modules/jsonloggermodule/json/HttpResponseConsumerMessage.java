@@ -89,7 +89,7 @@ public class HttpResponseConsumerMessage extends Message {
 			this.response = response;
 			return this;
 		}
-		public HttpResponseConsumerMessageBuilder additionalProperties(String name, String value) {
+		public HttpResponseConsumerMessageBuilder additionalProperties(String name, Object value) {
 			this.additionalProperties.put(name, value);
 			return this;
 		}

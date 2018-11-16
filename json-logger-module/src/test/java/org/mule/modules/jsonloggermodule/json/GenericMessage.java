@@ -53,7 +53,7 @@ public class GenericMessage extends Message {
 	    	this.message = message;
     		return this;
 	    }
-		public GenericMessageBuilder additionalProperties(String name, String value) {
+		public GenericMessageBuilder additionalProperties(String name, Object value) {
 			this.additionalProperties.put(name, value);
 			return this;
 		}

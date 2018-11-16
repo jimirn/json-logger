@@ -48,7 +48,7 @@ public class HttpRequestConsumerMessage extends Message {
 			this.name = name;
 			return this;
 		}
-		public HttpRequestConsumerMessageBuilder additionalProperties(String name, String value) {
+		public HttpRequestConsumerMessageBuilder additionalProperties(String name, Object value) {
 			this.additionalProperties.put(name, value);
 			return this;
 		}

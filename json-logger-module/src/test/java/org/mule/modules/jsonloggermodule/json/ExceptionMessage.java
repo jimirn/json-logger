@@ -101,7 +101,7 @@ public class ExceptionMessage extends Message {
 	    	}
 	    	return this;
 	    }
-		public ExceptionMessageBuilder additionalProperties(String name, String value) {
+		public ExceptionMessageBuilder additionalProperties(String name, Object value) {
 			this.additionalProperties.put(name, value);
 			return this;
 		}
