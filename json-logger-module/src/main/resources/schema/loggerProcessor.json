@@ -114,6 +114,8 @@
         "GENERIC",
         "HTTP_REQUEST_CONSUMER",
         "HTTP_RESPONSE_CONSUMER",
+        "HTTP_REQUEST_PROVIDER",
+        "HTTP_RESPONSE_PROVIDER",
         "EXCEPTION"
       ],
       "devkit": {
