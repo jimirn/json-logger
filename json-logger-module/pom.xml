@@ -21,7 +21,8 @@
 		<devkit.studio.package.skip>false</devkit.studio.package.skip>
 		<jdk.version>1.8</jdk.version>
 		<!-- Target Anypoint Organization Repository -->
-		<anypoint.org.id>b82c695f-6e8f-4c0b-881d-7cfdf8293b8e</anypoint.org.id>
+		<!-- anypoint.org.id>b82c695f-6e8f-4c0b-881d-7cfdf8293b8e</anypoint.org.id -->
+		<anypoint.org.id>0a604c17-d0bc-44a4-826a-22ae18778484</anypoint.org.id>
 		<type>connector</type>
 	</properties>
 
@@ -111,7 +112,7 @@
 		<repository>
 			<id>Exchange2</id>
 			<name>Exchange2 Repository</name>
-			<url>https://maven.anypoint.mulesoft.com/api/v1/organizations/${anypoint.org.id}/maven</url>
+			<url>https://maven.eu1.anypoint.mulesoft.com/api/v1/organizations/${anypoint.org.id}/maven</url>
 			<layout>default</layout>
 		</repository>
 	</distributionManagement>
